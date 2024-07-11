@@ -12,7 +12,7 @@ const MessageInput = ({ socket }: SocketProps) => {
 
     const handleSendMessage = (event: FormEvent) => {
         event.preventDefault();
-        socket.emit('message', { text: message });
+        socket.emit('message', { text: message, username: sessionStorage.getItem('username') });
         setMessage('');
     }
 

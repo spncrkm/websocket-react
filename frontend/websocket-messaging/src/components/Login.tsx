@@ -20,7 +20,8 @@ const Login = ({
       setUsername("");
       setShowInput(false);
       socket.disconnect();
-      setIsConnected(false)
+      setIsConnected(false);
+      
 
     } else {
       if (username !== "") {
@@ -28,6 +29,7 @@ const Login = ({
         setShowInput(true);
         socket.connect();
         setIsConnected(true)
+        sessionStorage.setItem('username',username)
       }
     }
   };

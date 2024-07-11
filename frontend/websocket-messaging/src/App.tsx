@@ -11,6 +11,7 @@ const socket = io("http://127.0.0.1:5000", {
   autoConnect: false,
 })
 
+
 export interface UserProps {
   username: string
   isLoggedIn: boolean
@@ -19,6 +20,11 @@ export interface UserProps {
   socket: Socket
   setIsConnected: React.Dispatch<React.SetStateAction<boolean>>
 }
+
+// export interface User {
+//   username: string
+//   socket: Socket
+// }
 
 function App() {
   const [isConnected, setIsConnected] = useState(socket.connected);
@@ -58,7 +64,7 @@ function App() {
       <Login setIsConnected={setIsConnected} socket={socket} username={username} isLoggedIn={isLoggedIn} setUsername={setUsername} setIsLoggedIn={setIsLoggedIn}/>
       {isConnected ? (
         <>
-        <Chatbody socket={socket}/>
+        <Chatbody socket={socket} username={username}/>
         <MessageInput socket={socket}/>
         {/* <Button variant='danger' onClick={handleDisconnect}>Disconnected</Button> */}
         </>
